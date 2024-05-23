@@ -23,7 +23,8 @@ class Patient(models.Model):
 	gender = models.IntegerField(choices=GENDER_CHOICES)
 	dob = models.DateField()
 	phone = models.CharField(max_length=20, blank=True, null=True)
-	address = models.TextField()
+	address = models.TextField(blank=True, null=True)
+	name = models.CharField(max_length=255)
 
 class Doctor(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

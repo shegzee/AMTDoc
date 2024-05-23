@@ -24,7 +24,7 @@ class AgentSerializer(serializers.ModelSerializer):
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('gender', 'dob', 'phone', 'address')
+        fields = ('gender', 'dob', 'phone', 'address', 'name')
 
 class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
