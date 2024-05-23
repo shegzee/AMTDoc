@@ -4,12 +4,12 @@ import requests
 url = 'http://127.0.0.1:8000/api/agent-patients/add/'
 
 # JWT access token obtained after login
-access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDQzMzgzLCJpYXQiOjE3MTY0MjUzODMsImp0aSI6IjAyMDUyNWUzMWVkNzQ2YTJhMDBlYWYxNmI2YWQyNTk1IiwidXNlcl9pZCI6MX0.Xg3u9y3EBc79rpq3zRM3pOzQQeb_2PutflNs8Z2VfcY'
+access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDQ2NTM3LCJpYXQiOjE3MTY0Mjg1MzcsImp0aSI6IjhmMGUyZGViZDg1ZTRlYTc5OWQyOWM0MmU4Yjk2ZTJkIiwidXNlcl9pZCI6MX0.eMr33hSt5M8-BXuoOouo35OwEHUNnfJ_SdpEnV_mnnU'
 
 # Patient data
 payload = {
-    'name': 'Janet Doe',
-    'age': 30,
+    'name': 'Jan Do',
+    'age': 300,
     'gender': '1',
     'dob': "2000-06-15",
     'address': '124 street'

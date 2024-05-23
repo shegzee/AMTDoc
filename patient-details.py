@@ -9,7 +9,8 @@ token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZX
 
 # Updated patient data
 payload = {
-    'name': 'Janet Doe',    'age': 30,
+    'name': 'Janet Doe',   
+    'age': 30,
     'gender': '1',
     'dob': "2000-06-15",
     'address': '24 street'

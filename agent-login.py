@@ -5,7 +5,7 @@ url = 'http://127.0.0.1:8000/api/agent-login/'
 
 # Login credentials
 payload = {
-    'username': 'buka',
+    'username': 'b',
     'password': 'buka'
 }
 

@@ -1,0 +1,42 @@
+1.
+/api/agent-signup/
+
+HTTP 200 OK
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "message": "Agent registered successfully."
+}
+2.
+
+/api/agent-login/
+
+Status Code: 200
+Response JSON: {'refresh': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNzAzMzAyOSwiaWF0IjoxNzE2NDI4MjI5LCJqdGkiOiIzY2Y3NDI2OGFmNWQ0NDIzOThiN2I5YzUyZWViNzRkNiIsInVzZXJfaWQiOjF9.3t58OpxA9dphQweyyzBpbC99yfycvs3qL_Fw-fqRy5Y', 'access': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDQ2MjI5LCJpYXQiOjE3MTY0MjgyMjksImp0aSI6IjFhNjE0YjM3YTFkNzQ3Mzc4NTdmMWFjNjViYmMwNzliIiwidXNlcl9pZCI6MX0.PLvKujo5V0lrKZAO2u4hIW0e5saD6wU_EKqCekd8lKk'}
+
+3. 
+/api/agent-patients/add/
+
+Status Code: 201
+Response JSON: {'gender': 1, 'dob': '2000-06-15', 'phone': None, 'address': '124 street'}
+
+4
+/api/agent-patients/list/
+
+Status Code: 200    
+Response JSON: [{'gender': 1, 
+'dob': '2000-06-15', 'phone': 
+None, 'address': '124 street'}]
+
+5.
+/api/agent-patients/{patient_id}/
+
+Status Code: 400    
+Response JSON: {'gender': ['This field is required.'], 'dob': ['This field is required.'], 'address': ['This field is required.']}
+C:\Users\USER\vs_django\AMTDoc>python patient-details.py    
+Status Code: 200    
+Response JSON: {'gender': 1, 'dob': '2000-06-15', 
+'phone': None, 'address': '24 
+street'} 
