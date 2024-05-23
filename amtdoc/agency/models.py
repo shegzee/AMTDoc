@@ -19,7 +19,7 @@ class Agent(models.Model):
 	phone = models.CharField(max_length=20)
 
 class Patient(models.Model):
-	agent = models.OneToOneField(Agent, on_delete=models.CASCADE, primary_key=True)
+	agent = models.ForeignKey(Agent, on_delete=models.CASCADE)
 	gender = models.IntegerField(choices=GENDER_CHOICES)
 	dob = models.DateField()
 	phone = models.CharField(max_length=20, blank=True, null=True)
