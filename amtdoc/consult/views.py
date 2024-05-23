@@ -90,6 +90,7 @@ def doctors_call(request, meetingId):
 	# meetingId = request.get()
 	template = loader.get_template("doctor/call.html")
 	context = {
+		"base_url": request.build_absolute_uri('/'),
 		"meetingId": meetingId
 	}
 	response = HttpResponse(template.render(context, request))
