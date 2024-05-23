@@ -1,0 +1,36 @@
+<html>
+	<head>
+		
+		<script type="text/javascript">
+			base_url = "{{ base_url }}"
+			fetch(base_url + '/consult/status/0').then(
+			response => { 
+				if (response.ok) {
+			  		return response.json();
+			 	}
+				throw new Error('Request failed!');
+			}, networkError => {
+			 console.log(networkError.message);
+			// }).then(jsonResponse => jsonResponse);
+			}).then(jsonResponse => {
+				const itemsHTML = data.consultations.map(item => {
+					return `
+						<div>
+							<a href="/consult/doctor/call/${item.meetingId}">Patient: ${item.patient.name}</a>
+						</div>
+					`;
+				}).join('');
+				document.getElementById('requests-list').innerHTML = itemsHTML;
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="requests-container">
+			<div><h2>Care Requests</h2></div>
+			<div id="requests-list">
+				
+			</div>
+		</div>
+	</body>
+</html>

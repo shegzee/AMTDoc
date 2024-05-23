@@ -19,7 +19,7 @@ def consultation_list(request, status=None):
 			consultations = Consultation.objects.filter(status=status)
 		serializer = ConsultationSerializer(consultations, many=True)
 		return JsonResponse(serializer.data, safe=False)
-	
+
 	elif request.method == 'POST':
 		data = JSONParser().parse(request)
 		serializer = ConsultationSerializer(data=data)
@@ -28,6 +28,7 @@ def consultation_list(request, status=None):
 			return JsonResponse(serializer.data, status=201)
 		return JsonResponse(serializer.errors, status=400)
 
+@csrf_exempt
 def consultation_detail(request, pk):
 	"""
 	Retrieve, update or delete a consultation
@@ -53,6 +54,7 @@ def consultation_detail(request, pk):
 		consultation.delete()
 		return HttpResponse(status=204)
 
+@csrf_exempt
 def update_consultation_status(request, pk, status=None):
 	"""
 	Accepts a consultation
@@ -70,3 +72,23 @@ def update_consultation_status(request, pk, status=None):
 		consultation.save()
 		serializer = ConsultationSerializer(consultation)
 		return JsonResponse(serializer.data)
+
+def doctors_view(request):
+	"""
+	For demonstration purposes. Loads doctor's page
+	"""
+	template = loader.get_template("doctor/doctor.html")
+	consultations = Consultation.objects.filter(status=0)
+	context = {
+		"base_url": request.build_absolute_uri('/'),
+		"consultations": consultations
+	}
+	return HttpResponse(template.render(context, request))
+
+def doctors_call(request, meetingId):
+	# meetingId = request.get()
+	template = loader.get_template("doctor/call.html")
+	context = {
+		"meetingId": meetingId
+	}
+	return HttpResponse(template.render(context, request))
