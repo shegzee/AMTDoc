@@ -1,6 +1,6 @@
 <html>
 	<head>
-		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 		<script type="text/javascript">
 			function fetch_requests() {
 				base_url = "{{ base_url }}"
@@ -24,6 +24,18 @@
 					document.getElementById('requests-list').innerHTML = itemsHTML;
 				});
 			}
+
+
+			$(function () {
+			    // bind change event to select
+			    $('#meeting-id').on('change', function () {
+			        //$('#ddlBiller')
+			        var meeting_id = $('#meeting-id').val();
+			        console.log(meeting_id);
+			        
+			        $('#meeting-link').attr("href", "/consult/doctor/call/" + meeting_id)
+			    });
+			});
 			
 		</script>
 
@@ -45,6 +57,10 @@
 				
 			</div>
 			<button onclick="fetch_requests()">View requests</button>
+		</div>
+		<div style="align: center">
+			<input id="meeting-id">
+			<a href="/consult/doctor/call/meeting_1" id="meeting-link">Join meeting</a>
 		</div>
 	</body>
 </html>
