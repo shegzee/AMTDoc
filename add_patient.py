@@ -4,14 +4,16 @@ import requests
 url = 'http://127.0.0.1:8000/api/agent-patients/add/'
 
 # JWT access token obtained after login
-access_token = '969986f8ae788c356dae85b763b8b2786a794937'  # Replace with your actual access token
+access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDQzMzgzLCJpYXQiOjE3MTY0MjUzODMsImp0aSI6IjAyMDUyNWUzMWVkNzQ2YTJhMDBlYWYxNmI2YWQyNTk1IiwidXNlcl9pZCI6MX0.Xg3u9y3EBc79rpq3zRM3pOzQQeb_2PutflNs8Z2VfcY'
 
 # Patient data
 payload = {
-    'name': 'John Doe',
+    'name': 'Janet Doe',
     'age': 30,
-    'condition': 'Condition details',
-    # Add any other required fields for the patient
+    'gender': '1',
+    'dob': "2000-06-15",
+    'address': '124 street'
+
 }
 
 # Set the headers with the JWT access token

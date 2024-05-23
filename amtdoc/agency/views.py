@@ -5,7 +5,10 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from .serializers import UserSerializer, AgentSerializer, PatientSerializer, DoctorSerializer, LgaSerializer 
 from .models import User, Agent, Patient, Doctor
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework.permissions import AllowAny
+
 from rest_framework.permissions import IsAuthenticated
 
 class AgentSignUpView(generics.CreateAPIView):
@@ -38,18 +41,9 @@ class AgentSignUpView(generics.CreateAPIView):
             return Response(serializer.errors, status=400)
 
 
-class AgentLoginView(ObtainAuthToken):
+class AgentLoginView(TokenObtainPairView):
     permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request': request})
-        if serializer.is_valid():
-            user = serializer.validated_data['user']
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key})
-        else:
-            return Response(serializer.errors, status=400)
+    serializer_class = TokenObtainPairSerializer
 
 
 class AddPatientView(generics.CreateAPIView):
@@ -58,7 +52,8 @@ class AddPatientView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save()
+        # Set the agent_id field of the Patient object to the id of the authenticated user
+        serializer.save(agent_id=self.request.user.id)
 
 
 

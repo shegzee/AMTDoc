@@ -5,18 +5,18 @@ patient_id = 1  # replace with actual patient ID
 url = f'http://127.0.0.1:8000/api/agent-patients/{patient_id}/'
 
 # Token obtained after login
-token = '969986f8ae788c356dae85b763b8b2786a794937'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2NDQzMzgzLCJpYXQiOjE3MTY0MjUzODMsImp0aSI6IjAyMDUyNWUzMWVkNzQ2YTJhMDBlYWYxNmI2YWQyNTk1IiwidXNlcl9pZCI6MX0.Xg3u9y3EBc79rpq3zRM3pOzQQeb_2PutflNs8Z2VfcY'
 
 # Updated patient data
 payload = {
-    'name': 'Jane Doe',
-    'age': 31,
-    'condition': 'Updated condition details',
-    # Add any other fields that need to be updated
+    'name': 'Janet Doe',    'age': 30,
+    'gender': '1',
+    'dob': "2000-06-15",
+    'address': '24 street'
 }
-
 headers = {
-    'Authorization': f'Token {token}'
+    'Authorization': f'Bearer {token}',
+    'Content-Type': 'application/json'
 }
 
 try:

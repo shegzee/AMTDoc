@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'agency',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'rest_framework'
 ]
 
@@ -62,6 +63,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=5),  # Change this to the desired duration
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # You can also adjust refresh token lifetime
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    # Other settings as needed
 }
 
 TEMPLATES = [

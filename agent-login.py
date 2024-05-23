@@ -5,8 +5,8 @@ url = 'http://127.0.0.1:8000/api/agent-login/'
 
 # Login credentials
 payload = {
-    'username': 'ebu',
-    'password': 'ebu'
+    'username': 'buka',
+    'password': 'buka'
 }
 
 # Send a POST request to the login endpoint
