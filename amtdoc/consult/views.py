@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import loader
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -77,7 +78,7 @@ def doctors_view(request):
 	"""
 	For demonstration purposes. Loads doctor's page
 	"""
-	template = loader.get_template("doctor/doctor.html")
+	template = loader.get_template("doctor/index.html")
 	consultations = Consultation.objects.filter(status=0)
 	context = {
 		"base_url": request.build_absolute_uri('/'),

@@ -2,27 +2,40 @@
 	<head>
 		
 		<script type="text/javascript">
-			base_url = "{{ base_url }}"
-			fetch(base_url + '/consult/status/0').then(
-			response => { 
-				if (response.ok) {
-			  		return response.json();
-			 	}
-				throw new Error('Request failed!');
-			}, networkError => {
-			 console.log(networkError.message);
-			// }).then(jsonResponse => jsonResponse);
-			}).then(jsonResponse => {
-				const itemsHTML = data.consultations.map(item => {
-					return `
-						<div>
-							<a href="/consult/doctor/call/${item.meetingId}">Patient: ${item.patient.name}</a>
-						</div>
-					`;
-				}).join('');
-				document.getElementById('requests-list').innerHTML = itemsHTML;
-			});
+			function fetch_requests() {
+				base_url = "{{ base_url }}"
+				fetch(base_url + '/api/consult/status/0').then(
+				response => { 
+					if (response.ok) {
+				  		return response.json();
+				 	}
+					throw new Error('Request failed!');
+				}, networkError => {
+				 console.log(networkError.message);
+				// }).then(jsonResponse => jsonResponse);
+				}).then(jsonResponse => {
+					const itemsHTML = jsonResponse.map(item => {
+						return `
+							<div>
+								<a href="/consult/doctor/call/${item.meetingId}">Patient: ${item.patient.name}</a>
+							</div>
+						`;
+					}).join('');
+					document.getElementById('requests-list').innerHTML = itemsHTML;
+				});
+			}
+			
 		</script>
+
+		<style type="text/css">
+			#requests-list {
+				width: 80%;
+				height: 30%;
+				overflow: scroll;
+				background-color: #EEEEEE;
+				border: 1px solid #111111;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -31,6 +44,7 @@
 			<div id="requests-list">
 				
 			</div>
+			<button onclick="fetch_requests()">Fetch requests</button>
 		</div>
 	</body>
 </html>
