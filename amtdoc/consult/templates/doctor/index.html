@@ -17,7 +17,7 @@
 					const itemsHTML = jsonResponse.map(item => {
 						return `
 							<div>
-								<a href="/consult/doctor/call/${item.meetingId}">Patient: ${item.patient.name}</a>
+								<a href="/consult/doctor/call/meeting_${item.id}">Patient: ${item.patient}</a>
 							</div>
 						`;
 					}).join('');

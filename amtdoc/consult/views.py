@@ -92,4 +92,7 @@ def doctors_call(request, meetingId):
 	context = {
 		"meetingId": meetingId
 	}
-	return HttpResponse(template.render(context, request))
+	response = HttpResponse(template.render(context, request))
+	#django.middleware.common.ReferrerPolicyMiddleware
+	response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+	return response

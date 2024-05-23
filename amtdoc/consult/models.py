@@ -19,7 +19,7 @@ class Consultation(models.Model):
 	doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, blank=True, null=True)
 	starttime = models.DateTimeField(auto_now_add=True)
 	endtime = models.DateTimeField(blank=True, null=True)
-	notes = models.TextField()
+	notes = models.TextField(blank=True, null=True)
 	status = models.IntegerField(choices=CONSULTATION_STATUS_CHOICES, default=0)
 
 	class Meta:

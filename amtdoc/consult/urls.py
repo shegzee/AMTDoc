@@ -7,5 +7,5 @@ urlpatterns = [
 	path('api/consult/<int:pk>', views.consultation_detail),
 	path('api/consult/status/<int:pk>/<int:status>', views.update_consultation_status),
 	path('consult/doctor/', views.doctors_view),
-	path('consult/doctor/call', views.doctors_call),
+	path('consult/doctor/call/<meetingId>', views.doctors_call),
 ]
